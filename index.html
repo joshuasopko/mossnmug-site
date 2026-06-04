@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moss &amp; Mug — Herbal Coffee &amp; Tea Bar | Sioux Falls, SD</title>
+  <meta name="description" content="Moss &amp; Mug is an herbal coffee and tea bar nestled inside Juniper Apothecary in Sioux Falls, South Dakota. Sip Slow. Live Wild.">
+  <meta property="og:title" content="Moss &amp; Mug — Herbal Coffee &amp; Tea Bar">
+  <meta property="og:description" content="A place where the earth meets your cup, and slowing down feels like freedom.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mossnmug.coffee">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* =====================
+       CSS VARIABLES
+    ===================== */
+    :root {
+      --dark-brown: #3e2c1a;
+      --cream: #ece5d4;
+      --gold: #bb9c63;
+      --moss: #596740;
+      --light-gold: #937e54;
+      --sage: #b1c296;
+      --mid-bg: #2a1e10;
+      --section-alt: #f5f0e6;
+      --nav-height: 64px;
+    }
+
+    /* =====================
+       RESET & BASE
+    ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--dark-brown);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* =====================
+       NAVIGATION
+    ===================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: rgba(62, 44, 26, 0.97);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid rgba(187, 156, 99, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      transition: background 0.3s;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo .amp { color: var(--gold); font-style: italic; }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 10.5px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(236, 229, 212, 0.55);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* Mobile nav */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: rgba(187, 156, 99, 0.6);
+      transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      background: rgba(42, 30, 16, 0.99);
+      backdrop-filter: blur(8px);
+      z-index: 99;
+      padding: 32px 48px;
+      border-bottom: 0.5px solid rgba(187, 156, 99, 0.15);
+    }
+    .nav-mobile-menu.open { display: block; }
+    .nav-mobile-menu ul { list-style: none; }
+    .nav-mobile-menu ul li { padding: 14px 0; border-bottom: 0.5px solid rgba(187, 156, 99, 0.08); }
+    .nav-mobile-menu ul li a {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(236, 229, 212, 0.6);
+      transition: color 0.2s;
+    }
+    .nav-mobile-menu ul li a:hover { color: var(--gold); }
+
+    /* =====================
+       SECTION SHARED
+    ===================== */
+    .section-label {
+      font-size: 9.5px;
+      font-weight: 300;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--light-gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 0.5px;
+      background: var(--light-gold);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* =====================
+       HERO
+    ===================== */
+    #hero {
+      min-height: 100vh;
+      background: var(--dark-brown);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-height) + 60px) 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(89, 103, 64, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 100%, rgba(187, 156, 99, 0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-branch { margin-bottom: 20px; opacity: 0.5; }
+    .hero-wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 8vw, 88px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      position: relative;
+    }
+    .hero-wordmark .amp { color: var(--gold); font-style: italic; }
+    .hero-subtitle {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 16px;
+    }
+    .hero-tagline {
+      font-size: 9.5px;
+      font-weight: 300;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(236, 229, 212, 0.35);
+      margin-top: 8px;
+    }
+    .hero-divider {
+      width: 40px;
+      height: 0.5px;
+      background: var(--gold);
+      margin: 30px auto;
+      opacity: 0.45;
+    }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(236, 229, 212, 0.8);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 13px 36px;
+      border: 0.5px solid rgba(187, 156, 99, 0.45);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .hero-cta:hover {
+      background: rgba(187, 156, 99, 0.08);
+      border-color: var(--gold);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.3;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .hero-scroll span {
+      font-size: 8px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero-scroll svg { color: var(--gold); }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* =====================
+       ABOUT
+    ===================== */
+    #about {
+      background: var(--section-alt);
+      padding: 96px 48px;
+    }
+    .about-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    #about .section-label { color: var(--light-gold); }
+    #about h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3.5vw, 42px);
+      font-weight: 400;
+      color: var(--dark-brown);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    #about h2 em { font-style: italic; color: var(--moss); }
+    #about p {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(62, 44, 26, 0.68);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .about-badge {
+      display: inline-block;
+      padding: 7px 15px;
+      border: 0.5px solid rgba(89, 103, 64, 0.3);
+      background: rgba(89, 103, 64, 0.07);
+      font-size: 9.5px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 20px;
+    }
+    .about-quote {
+      padding-top: 20px;
+      border-top: 0.5px solid rgba(89, 103, 64, 0.2);
+      margin-top: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--moss);
+      line-height: 1.6;
+    }
+
+    /* =====================
+       PHILOSOPHY
+    ===================== */
+    #philosophy {
+      background: var(--mid-bg);
+      padding: 96px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    #philosophy::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(89, 103, 64, 0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .philosophy-inner { max-width: 960px; margin: 0 auto; }
+    #philosophy .section-label { color: rgba(177, 194, 150, 0.55); }
+    #philosophy .section-label::before { background: var(--sage); }
+    #philosophy h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3.5vw, 42px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 48px;
+      max-width: 560px;
+    }
+    #philosophy h2 em { color: var(--gold); font-style: italic; }
+    .phil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .phil-item {
+      padding: 28px;
+      border: 0.5px solid rgba(187, 156, 99, 0.13);
+      background: rgba(236, 229, 212, 0.03);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .phil-item:hover {
+      background: rgba(236, 229, 212, 0.05);
+      border-color: rgba(187, 156, 99, 0.25);
+    }
+    .phil-item-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .phil-item p {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(236, 229, 212, 0.52);
+      line-height: 1.85;
+    }
+
+    /* =====================
+       MENU
+    ===================== */
+    #menu {
+      background: var(--cream);
+      padding: 96px 48px;
+    }
+    .menu-inner { max-width: 960px; margin: 0 auto; }
+    #menu .section-label { color: var(--light-gold); }
+    #menu h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3.5vw, 42px);
+      font-weight: 400;
+      color: var(--dark-brown);
+      line-height: 1.15;
+      margin-bottom: 48px;
+    }
+    #menu h2 em { font-style: italic; color: var(--light-gold); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .menu-card {
+      padding: 24px;
+      border-top: 1.5px solid var(--light-gold);
+      background: rgba(255, 255, 255, 0.55);
+    }
+    .menu-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--dark-brown);
+      margin-bottom: 14px;
+    }
+    .menu-card ul { list-style: none; }
+    .menu-card ul li {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(62, 44, 26, 0.62);
+      line-height: 2.1;
+      letter-spacing: 0.02em;
+    }
+    .menu-card ul li::before { content: '– '; color: var(--light-gold); }
+    .menu-specialty {
+      padding: 24px 32px;
+      background: var(--dark-brown);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .menu-specialty p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(236, 229, 212, 0.82);
+      line-height: 1.6;
+    }
+    .menu-specialty-badge {
+      flex-shrink: 0;
+      padding: 8px 16px;
+      border: 0.5px solid rgba(187, 156, 99, 0.38);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* =====================
+       LOCATION & HOURS
+    ===================== */
+    #visit {
+      background: var(--dark-brown);
+      padding: 96px 48px;
+    }
+    .visit-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    #visit h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3.5vw, 42px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 48px;
+      line-height: 1.15;
+    }
+    #visit h2 em { font-style: italic; color: var(--gold); }
+    #visit .section-label { color: rgba(187, 156, 99, 0.45); }
+    #visit .section-label::before { background: rgba(187, 156, 99, 0.45); }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .map-placeholder {
+      background: rgba(255, 255, 255, 0.03);
+      border: 0.5px solid rgba(187, 156, 99, 0.12);
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .map-placeholder span {
+      font-size: 9.5px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(187, 156, 99, 0.3);
+    }
+    .address-block {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 0.5px solid rgba(187, 156, 99, 0.1);
+    }
+    .address-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(236, 229, 212, 0.42);
+      line-height: 1.9;
+    }
+    .hours-list { list-style: none; }
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 0.5px solid rgba(187, 156, 99, 0.08);
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(236, 229, 212, 0.62);
+    }
+    .hours-list .day {
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(236, 229, 212, 0.35);
+    }
+
+    /* =====================
+       CONTACT
+    ===================== */
+    #contact {
+      background: var(--section-alt);
+      padding: 96px 48px;
+    }
+    .contact-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    #contact .section-label { color: var(--light-gold); }
+    #contact h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3.5vw, 42px);
+      font-weight: 400;
+      color: var(--dark-brown);
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    #contact h2 em { font-style: italic; color: var(--moss); }
+    .contact-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(62, 44, 26, 0.5);
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+    .form-row { margin-bottom: 20px; }
+    .form-row label {
+      display: block;
+      font-size: 9.5px;
+      font-weight: 300;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--light-gold);
+      margin-bottom: 8px;
+    }
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      border: 0.5px solid rgba(147, 126, 84, 0.3);
+      border-radius: 0;
+      padding: 12px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--dark-brown);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus { border-color: var(--light-gold); }
+    .form-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    /* Netlify honeypot */
+    .form-honeypot { display: none; }
+    .submit-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 14px 40px;
+      background: var(--dark-brown);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .submit-btn:hover { background: var(--mid-bg); }
+    .form-success {
+      display: none;
+      padding: 20px 24px;
+      background: rgba(89, 103, 64, 0.08);
+      border: 0.5px solid rgba(89, 103, 64, 0.25);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--moss);
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: var(--mid-bg);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 0.5px solid rgba(187, 156, 99, 0.1);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(236, 229, 212, 0.38);
+    }
+    .footer-logo .amp { color: rgba(187, 156, 99, 0.55); }
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      font-style: italic;
+      color: rgba(187, 156, 99, 0.32);
+    }
+    .footer-copy {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(236, 229, 212, 0.22);
+    }
+
+    /* =====================
+       RESPONSIVE
+    ===================== */
+    @media (max-width: 768px) {
+      .nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      #hero { padding: calc(var(--nav-height) + 40px) 24px 64px; }
+
+      #about { padding: 72px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      #philosophy { padding: 72px 24px; }
+      .phil-grid { grid-template-columns: 1fr; gap: 14px; }
+
+      #menu { padding: 72px 24px; }
+      .menu-grid { grid-template-columns: 1fr; gap: 16px; }
+      .menu-specialty { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+      #visit { padding: 72px 24px; }
+      .visit-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      #contact { padding: 72px 24px; }
+      .form-2col { grid-template-columns: 1fr; gap: 0; }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 32px 24px;
+      }
+    }
+
+    /* =====================
+       SCROLL ANIMATIONS
+    ===================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================
+       NAVIGATION
+  ===================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo">moss <span class="amp">&amp;</span> mug</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#philosophy" class="mobile-link">Philosophy</a></li>
+      <li><a href="#menu" class="mobile-link">Menu</a></li>
+      <li><a href="#visit" class="mobile-link">Visit</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- =====================
+       HERO
+  ===================== -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+
+    <div class="hero-branch">
+      <svg width="180" height="54" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18 44 Q60 32 102 28 Q144 24 200 18" stroke="#bb9c63" stroke-width="1.2" fill="none" opacity="0.55"/>
+        <path d="M42 40 Q50 26 57 19" stroke="#bb9c63" stroke-width="0.9" fill="none" opacity="0.5"/>
+        <ellipse cx="59" cy="16" rx="7.5" ry="4.5" transform="rotate(-32 59 16)" fill="none" stroke="#bb9c63" stroke-width="0.9" opacity="0.5"/>
+        <path d="M70 36 Q78 22 86 15" stroke="#bb9c63" stroke-width="0.9" fill="none" opacity="0.5"/>
+        <ellipse cx="88" cy="12" rx="7" ry="4" transform="rotate(-26 88 12)" fill="none" stroke="#bb9c63" stroke-width="0.9" opacity="0.5"/>
+        <path d="M100 30 Q109 19 114 12" stroke="#bb9c63" stroke-width="0.9" fill="none" opacity="0.48"/>
+        <ellipse cx="116" cy="9" rx="6.5" ry="3.8" transform="rotate(-20 116 9)" fill="none" stroke="#bb9c63" stroke-width="0.9" opacity="0.48"/>
+        <path d="M128 26 Q137 15 142 9" stroke="#bb9c63" stroke-width="0.8" fill="none" opacity="0.42"/>
+        <ellipse cx="144" cy="7" rx="6" ry="3.5" transform="rotate(-14 144 7)" fill="none" stroke="#bb9c63" stroke-width="0.8" opacity="0.42"/>
+        <path d="M158 22 Q165 13 168 7" stroke="#bb9c63" stroke-width="0.8" fill="none" opacity="0.36"/>
+        <ellipse cx="169" cy="5" rx="5.5" ry="3" transform="rotate(-8 169 5)" fill="none" stroke="#bb9c63" stroke-width="0.8" opacity="0.36"/>
+        <path d="M182 18 Q188 11 190 6" stroke="#bb9c63" stroke-width="0.7" fill="none" opacity="0.28"/>
+        <ellipse cx="191" cy="4" rx="4.5" ry="2.5" transform="rotate(-4 191 4)" fill="none" stroke="#bb9c63" stroke-width="0.7" opacity="0.28"/>
+      </svg>
+    </div>
+
+    <h1 class="hero-wordmark">moss <span class="amp">&amp;</span> mug</h1>
+    <p class="hero-subtitle">Herbal Coffee &amp; Tea Bar</p>
+    <p class="hero-tagline">Sip Slow &nbsp;&middot;&nbsp; Live Wild</p>
+    <div class="hero-divider"></div>
+    <p class="hero-headline">A place where the earth meets your cup, and slowing down feels like freedom.</p>
+    <a href="#about" class="hero-cta">Come find us</a>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <svg width="12" height="16" viewBox="0 0 12 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M6 2v14M2 12l4 4 4-4"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- =====================
+       ABOUT
+  ===================== -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="fade-up">
+        <div class="section-label">About</div>
+        <h2>Where the wild <em>sits down</em> and stays a while.</h2>
+        <p>Moss &amp; Mug is nestled inside Juniper Apothecary, where intentional living isn't a trend — it's the whole point. Come for the coffee. Stay for the quiet.</p>
+      </div>
+      <div class="fade-up">
+        <div class="about-badge">Inside Juniper Apothecary · Sioux Falls, SD</div>
+        <p>We brew coffee and tea the way nature intended things to go — without rushing, without pretense. Pull up a seat, let the kids wander, let yourself breathe. This is your unhurried corner of Sioux Falls.</p>
+        <div class="about-quote">"Not everything that's good for you has to feel like medicine."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       PHILOSOPHY
+  ===================== -->
+  <section id="philosophy">
+    <div class="philosophy-inner">
+      <div class="section-label">Philosophy</div>
+      <h2 class="fade-up">We believe <em>nature knows</em> what it's doing.</h2>
+      <div class="phil-grid">
+        <div class="phil-item fade-up">
+          <div class="phil-item-title">Against the grain</div>
+          <p>We're not interested in what's mainstream. We're interested in what's true. Real ingredients, real plants, real conversation.</p>
+        </div>
+        <div class="phil-item fade-up">
+          <div class="phil-item-title">Your body, your call</div>
+          <p>We trust you to know what you need. We're just here to give you good options and a comfortable chair while you figure it out.</p>
+        </div>
+        <div class="phil-item fade-up">
+          <div class="phil-item-title">Slow on purpose</div>
+          <p>There's a reason moss doesn't rush. We built this space to be the antidote to the 30-second drive-through.</p>
+        </div>
+        <div class="phil-item fade-up">
+          <div class="phil-item-title">Rooted in the wild</div>
+          <p>From the herbs in your cup to the botanicals on the shelf beside you, everything here traces back to the earth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       MENU
+  ===================== -->
+  <section id="menu">
+    <div class="menu-inner">
+      <div class="section-label">The Menu</div>
+      <h2 class="fade-up">Simple things, <em>done with care.</em></h2>
+      <div class="menu-grid">
+        <div class="menu-card fade-up">
+          <div class="menu-card-title">Coffee</div>
+          <ul>
+            <li>Drip coffee</li>
+            <li>Espresso</li>
+            <li>Latte</li>
+            <li>Cappuccino</li>
+            <li>Americano</li>
+          </ul>
+        </div>
+        <div class="menu-card fade-up">
+          <div class="menu-card-title">Tea &amp; Herbal</div>
+          <ul>
+            <li>House herbal blends</li>
+            <li>Loose leaf teas</li>
+            <li>Herbal chai</li>
+            <li>Botanical tonics</li>
+          </ul>
+        </div>
+        <div class="menu-card fade-up">
+          <div class="menu-card-title">Baked Goods</div>
+          <ul>
+            <li>Scotcharoos</li>
+            <li>Rice crispy bars</li>
+            <li>Seasonal cookies</li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-specialty fade-up">
+        <p>Our specialty and seasonal drinks change with the herbs and the season. Stop by and see what's brewing.</p>
+        <div class="menu-specialty-badge">Always changing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       LOCATION & HOURS
+  ===================== -->
+  <section id="visit">
+    <div class="visit-inner">
+      <div class="section-label">Visit</div>
+      <h2 class="fade-up">Come find <em>your corner.</em></h2>
+      <div class="visit-grid">
+        <div class="fade-up">
+          <!-- Replace with Google Maps embed iframe when ready -->
+          <div class="map-placeholder" aria-label="Map coming soon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(187,156,99,0.3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="10" r="3"/>
+              <path d="M12 2a8 8 0 0 1 8 8c0 5.25-8 12-8 12S4 15.25 4 10a8 8 0 0 1 8-8z"/>
+            </svg>
+            <span>Map coming soon</span>
+          </div>
+          <div class="address-block">
+            <p>
+              Inside Juniper Apothecary<br>
+              [Street Address]<br>
+              Sioux Falls, South Dakota
+            </p>
+          </div>
+        </div>
+        <div class="fade-up">
+          <ul class="hours-list">
+            <li><span class="day">Monday – Friday</span><span>8am – 5pm</span></li>
+            <li><span class="day">Saturday</span><span>9am – 4pm</span></li>
+            <li><span class="day">Sunday</span><span>Closed</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       CONTACT
+  ===================== -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-label">Say Hello</div>
+      <h2 class="fade-up">Drop us <em>a note.</em></h2>
+      <p class="contact-sub fade-up">Questions, events, or just want to say you love herbal coffee? We're listening.</p>
+
+      <!-- Netlify form — name attribute is required for Netlify to detect it -->
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        id="contactForm"
+      >
+        <!-- Netlify required hidden input -->
+        <input type="hidden" name="form-name" value="contact">
+
+        <!-- Honeypot spam field — hidden from humans -->
+        <div class="form-honeypot">
+          <label>Don't fill this out: <input name="bot-field"></label>
+        </div>
+
+        <div class="form-2col">
+          <div class="form-row">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send it</button>
+      </form>
+
+      <div class="form-success" id="formSuccess" role="alert">
+        Message received. We'll be in touch soon.
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       FOOTER
+  ===================== -->
+  <footer>
+    <div class="footer-logo">moss <span class="amp">&amp;</span> mug</div>
+    <div class="footer-tagline">Sip Slow &middot; Live Wild</div>
+    <div class="footer-copy">&copy; 2025 Moss &amp; Mug &mdash; Sioux Falls, SD</div>
+  </footer>
+
+  <!-- =====================
+       JAVASCRIPT
+  ===================== -->
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      mobileMenu.setAttribute('aria-hidden', !isOpen);
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+        mobileMenu.setAttribute('aria-hidden', true);
+      });
+    });
+
+    // Scroll fade-in animations
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Netlify form AJAX submission
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('formSuccess');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data).toString()
+          });
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } catch (err) {
+          alert('Something went wrong. Please try emailing us directly at hello@mossnmug.coffee');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
