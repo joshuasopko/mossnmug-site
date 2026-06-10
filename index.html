@@ -671,6 +671,43 @@
     /* =====================
        RESPONSIVE
     ===================== */
+    #the-name {
+      background: var(--dark-brown);
+      padding: 96px 48px;
+    }
+    .name-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #the-name .section-label {
+      justify-content: center;
+      color: rgba(187, 156, 99, 0.5);
+      margin-bottom: 40px;
+    }
+    #the-name .section-label::before {
+      display: none;
+    }
+    .name-content p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 300;
+      color: rgba(236, 229, 212, 0.75);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+    .name-closing {
+      font-style: italic;
+      color: var(--gold) !important;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      #the-name {
+        padding: 72px 24px;
+      }
+    }
+
     @media (max-width: 768px) {
       .nav { padding: 0 24px; }
       .nav-links { display: none; }
@@ -753,7 +790,7 @@
 
     <h1 class="hero-wordmark"><img src="logo-hero.svg" alt="Moss &amp; Mug"></h1>
     <div class="hero-divider"></div>
-    <p class="hero-headline">Specialty coffee and herbal teas brewed slow, with intention, inside Juniper Apothecary.</p>
+    <p class="hero-headline">Specialty coffee and herbal teas brewed slow, with intention, inside <a href="https://juniperapothecary.com" target="_blank" rel="noopener noreferrer" style="color: inherit; border-bottom: 0.5px solid rgba(187,156,99,0.4); padding-bottom: 1px; transition: border-color 0.2s;">Juniper Apothecary</a>.</p>
     <p class="hero-subline">Not a drive-through. Not a chain. Just good things, done right.</p>
     <a href="#about" class="hero-cta">See what's brewing</a>
 
@@ -773,12 +810,27 @@
       <div class="fade-up">
         <div class="section-label">About</div>
         <h2>Where the wild <em>wanders in</em> and takes its time.</h2>
-        <p>Moss &amp; Mug lives inside Juniper Apothecary, where intentional living isn't a trend — it's the whole point. Grab something good and explore the shelves. That's the whole idea.</p>
+        <p>Moss &amp; Mug lives inside <a href="https://juniperapothecary.com" target="_blank" rel="noopener noreferrer" style="color: inherit; border-bottom: 0.5px solid rgba(187,156,99,0.4); padding-bottom: 1px; transition: border-color 0.2s;">Juniper Apothecary</a>, where intentional living isn't a trend — it's the whole point. Grab something good and explore the shelves. That's the whole idea.</p>
       </div>
       <div class="fade-up">
-        <div class="about-badge">Inside Juniper Apothecary · Sioux Falls, SD</div>
+        <div class="about-badge">Inside <a href="https://juniperapothecary.com" target="_blank" rel="noopener noreferrer" style="color: inherit; border-bottom: 0.5px solid rgba(187,156,99,0.4); padding-bottom: 1px; transition: border-color 0.2s;">Juniper Apothecary</a> · Sioux Falls, SD</div>
         <p>We brew coffee and tea without rushing, without pretense. Something worth sipping while you wander. This is your unhurried corner of Sioux Falls.</p>
         <div class="about-quote">"Not everything that's good for you has to feel like medicine."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       THE NAME
+  ===================== -->
+  <section id="the-name">
+    <div class="name-inner">
+      <div class="section-label">Why Moss & Mug?</div>
+      <div class="name-content fade-up">
+        <p>Moss doesn't grow where things move fast. It finds the quiet corners, the shaded rocks, the forgotten edges of the forest floor — and it thrives there. Slow, deliberate, deeply rooted. It doesn't compete. It just grows.</p>
+        <p>That's the energy we wanted to bring into every cup.</p>
+        <p>The mug is simple. It's the thing you wrap both hands around on a cold morning. The thing that says slow down, you're not late, this moment is enough. No screens required. No drive-through window. Just something warm, made with intention, and worth savoring.</p>
+        <p class="name-closing">Moss & Mug. The earth and the ritual. That's the whole idea.</p>
       </div>
     </div>
   </section>
@@ -867,7 +919,7 @@
           </iframe>
           <div class="address-block">
             <p>
-              Inside Juniper Apothecary<br>
+              Inside <a href="https://juniperapothecary.com" target="_blank" rel="noopener noreferrer" style="color: inherit; border-bottom: 0.5px solid rgba(187,156,99,0.4); padding-bottom: 1px; transition: border-color 0.2s;">Juniper Apothecary</a><br>
               2019 S Minnesota Ave<br>
               Sioux Falls, SD 57105
             </p>
