@@ -667,6 +667,24 @@
       letter-spacing: 0.08em;
       color: rgba(236, 229, 212, 0.5);
     }
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+    .footer-social a:hover {
+      opacity: 0.85;
+    }
+    .footer-social img {
+      height: 18px;
+      width: 18px;
+    }
 
     /* =====================
        RESPONSIVE
@@ -989,6 +1007,14 @@
   <footer>
     <div class="footer-logo"><img src="logo.svg" alt="Moss &amp; Mug"></div>
     <div class="footer-tagline">Sip Slow &middot; Live Wild</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/people/Moss-Mug-Herbal-Tea-Coffee-Bar/61590587622594/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <img src="icon-facebook.svg" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/mossandmug.coffee" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="icon-instagram.svg" alt="Instagram">
+      </a>
+    </div>
     <div class="footer-copy">&copy; <span id="footer-year"></span> Moss &amp; Mug &mdash; Sioux Falls, SD</div>
   </footer>
 
