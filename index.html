@@ -407,7 +407,7 @@
     #menu h2 em { font-style: italic; color: var(--light-gold); }
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
       margin-bottom: 28px;
     }
@@ -432,6 +432,35 @@
       letter-spacing: 0.02em;
     }
     .menu-card ul li::before { content: '– '; color: var(--light-gold); }
+    .menu-item-note {
+      font-size: 11px;
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0;
+      text-transform: none;
+      color: rgba(62, 44, 26, 0.4);
+      margin-left: 6px;
+    }
+    .menu-list-item { margin-bottom: 16px; }
+    .menu-list-item:last-of-type { margin-bottom: 0; }
+    .menu-list-item-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--dark-brown);
+      margin-bottom: 4px;
+    }
+    .menu-list-item p {
+      font-size: 13.8px;
+      font-weight: 300;
+      color: rgba(62, 44, 26, 0.55);
+      line-height: 1.7;
+    }
+    .menu-divider {
+      border-top: 0.5px solid rgba(147, 126, 84, 0.2);
+      margin: 16px 0;
+    }
     .menu-card-note {
       font-size: 14px;
       font-weight: 300;
@@ -918,23 +947,62 @@
       <h2 class="fade-up">Simple things, <em>done with care.</em></h2>
       <div class="menu-grid">
         <div class="menu-card fade-up">
-          <div class="menu-card-title">Coffee</div>
+          <div class="menu-card-title">Coffee &amp; Espresso</div>
           <ul>
-            <li>Latte</li>
+            <li>Espresso</li>
             <li>Americano</li>
-            <li>Pour over</li>
+            <li>Cappuccino</li>
+            <li>Cortado <span class="menu-item-note">Traditional 4 oz</span></li>
+            <li>Pour Over <span class="menu-item-note">Dark roast blend</span></li>
             <li>Mocha</li>
-            <li>Lemonade</li>
+            <li>Latte <span class="menu-item-note">Hot or iced</span></li>
           </ul>
-          <p class="menu-card-note">All drinks 12 oz, available hot or iced. House-made syrups available.</p>
+          <p class="menu-card-note">Oat milk, housemade syrups, and vanilla cold foam available as add-ons.</p>
         </div>
         <div class="menu-card fade-up">
-          <div class="menu-card-title">Tea &amp; Herbal</div>
-          <p class="menu-card-note">Herbal tea blends are on the way. Check back soon.</p>
+          <div class="menu-card-title">Housemade Syrups</div>
+          <ul>
+            <li>Caramel</li>
+            <li>Vanilla</li>
+            <li>Brown Sugar Cinnamon</li>
+          </ul>
+          <div class="menu-list-item" style="margin-top: 16px;">
+            <div class="menu-list-item-title">The Meadow <span class="menu-item-note">Signature syrup</span></div>
+            <p>Honey, vanilla, chamomile, lemon balm &amp; lavender.</p>
+          </div>
+          <div class="menu-divider"></div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Elderflower Love <span class="menu-item-note">Rotating syrup</span></div>
+            <p>Elderflower, lemon verbena &amp; a touch of citrus.</p>
+          </div>
         </div>
         <div class="menu-card fade-up">
-          <div class="menu-card-title">Baked Goods</div>
-          <p class="menu-card-note">House-made baked goods coming soon.</p>
+          <div class="menu-card-title">Teas</div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Garden Grove <span class="menu-item-note">Hot or iced</span></div>
+            <p>A fresh garden blend to calm the mind, relax the spirit, and focus the brain.</p>
+          </div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Sunshine <span class="menu-item-note">Hot only</span></div>
+            <p>Lemongrass, calendula, orange peel, spearmint, rosehips &amp; lemon balm.</p>
+          </div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Summer Berry <span class="menu-item-note">Hot or iced</span></div>
+            <p>Feels like summer. You'll agree — we like it iced.</p>
+          </div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Wildflower <span class="menu-item-note">Hot or iced</span></div>
+            <p>Light, airy floral notes, like a field in bloom. We like it iced.</p>
+          </div>
+          <p class="menu-card-note">All our teas are hand-blended in-house — thoughtfully created, and worth slowing down for.</p>
+        </div>
+        <div class="menu-card fade-up">
+          <div class="menu-card-title">Lemonade &amp; Others</div>
+          <ul>
+            <li>Classic Lemonade</li>
+            <li>Hot Chocolate</li>
+          </ul>
+          <p class="menu-card-note">Add a housemade flavoring syrup — strawberry, or rose &amp; hibiscus.</p>
         </div>
       </div>
       <div class="menu-specialty fade-up">
