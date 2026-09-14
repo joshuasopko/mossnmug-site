@@ -26,6 +26,7 @@
       --sage: #b1c296;
       --mid-bg: #2a1e10;
       --section-alt: #f5f0e6;
+      --autumn: #c1652e;
       --nav-height: 64px;
     }
 
@@ -441,6 +442,13 @@
       color: rgba(62, 44, 26, 0.4);
       margin-left: 6px;
     }
+    .menu-item-note-popular {
+      font-style: normal;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--moss);
+    }
     .menu-list-item { margin-bottom: 16px; }
     .menu-list-item:last-of-type { margin-bottom: 0; }
     .menu-list-item-title {
@@ -497,6 +505,42 @@
       text-transform: uppercase;
       color: var(--gold);
       white-space: nowrap;
+    }
+
+    /* =====================
+       FALL MENU (seasonal — remove/update after Oct 31)
+    ===================== */
+    #fall-menu {
+      background: var(--mid-bg);
+      padding: 96px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .fall-inner { max-width: 960px; margin: 0 auto; }
+    #fall-menu .section-label { color: var(--autumn); }
+    #fall-menu .section-label::before { background: var(--autumn); opacity: 0.6; }
+    #fall-menu h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4.2vw, 50.4px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    #fall-menu h2 em { font-style: italic; color: var(--autumn); }
+    .fall-intro {
+      font-size: 14.4px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(236, 229, 212, 0.55);
+      margin-bottom: 40px;
+    }
+    #fall-menu .menu-card {
+      background: rgba(245, 240, 230, 0.96);
+      border-top: 1.5px solid var(--autumn);
+    }
+    #fall-menu .menu-list-item-title {
+      color: var(--autumn);
     }
 
     /* =====================
@@ -800,6 +844,8 @@
       .menu-grid { grid-template-columns: 1fr; gap: 16px; }
       .menu-specialty { flex-direction: column; align-items: flex-start; gap: 16px; }
 
+      #fall-menu { padding: 72px 24px; }
+
       #visit { padding: 72px 24px; }
       .visit-grid { grid-template-columns: 1fr; gap: 32px; }
 
@@ -951,7 +997,7 @@
           <ul>
             <li>Espresso</li>
             <li>Americano</li>
-            <li>Cappuccino</li>
+            <li>Cold Brew <span class="menu-item-note">Served over ice · 16 oz</span></li>
             <li>Cortado <span class="menu-item-note">Traditional 4 oz</span></li>
             <li>Pour Over <span class="menu-item-note">Dark roast blend</span></li>
             <li>Mocha</li>
@@ -967,13 +1013,8 @@
             <li>Brown Sugar Cinnamon</li>
           </ul>
           <div class="menu-list-item" style="margin-top: 16px;">
-            <div class="menu-list-item-title">The Meadow <span class="menu-item-note">Signature syrup</span></div>
-            <p>Honey, vanilla, chamomile, lemon balm &amp; lavender.</p>
-          </div>
-          <div class="menu-divider"></div>
-          <div class="menu-list-item">
-            <div class="menu-list-item-title">Elderflower Love <span class="menu-item-note">Rotating syrup</span></div>
-            <p>Elderflower, lemon verbena &amp; a touch of citrus.</p>
+            <div class="menu-list-item-title">The Meadow <span class="menu-item-note menu-item-note-popular">Signature · Fan Favorite</span></div>
+            <p>Honey, vanilla, chamomile, lemon balm &amp; lavender — the one everyone asks for by name.</p>
           </div>
         </div>
         <div class="menu-card fade-up">
@@ -1003,11 +1044,59 @@
             <li>Hot Chocolate</li>
           </ul>
           <p class="menu-card-note">Add a housemade flavoring syrup — strawberry, or rose &amp; hibiscus.</p>
+          <div class="menu-list-item" style="margin-top: 16px;">
+            <div class="menu-list-item-title">Better than Grandma's Cookies</div>
+            <p>Brown butter chocolate chip, or party confetti with dye-free sprinkles. We dare grandma to beat this!</p>
+          </div>
         </div>
       </div>
       <div class="menu-specialty fade-up">
         <p>Our specialty and seasonal drinks change with the herbs and the season. Stop by and see what's brewing.</p>
         <div class="menu-specialty-badge">Always changing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       FALL MENU — seasonal, remove or update after Oct 31
+  ===================== -->
+  <section id="fall-menu">
+    <div class="fall-inner">
+      <div class="section-label">Fall Menu · Through Oct 31</div>
+      <h2 class="fade-up">Autumn, <em>brewed.</em></h2>
+      <p class="fall-intro fade-up">The most unique, flavor-packed fall menu in the Midwest. We might be biased. We might also be right.</p>
+      <div class="menu-grid">
+        <div class="menu-card fade-up">
+          <div class="menu-card-title">Lattes &amp; Cold Brew</div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">The Harvest <span class="menu-item-note">A spicy sister to The Meadow</span></div>
+            <p>Honey, chamomile, lemon balm &amp; cinnamon.</p>
+          </div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Elderberry Remedy <span class="menu-item-note">Fall is calling for this</span></div>
+            <p>Elderberry, cinnamon, clove, orange, rose &amp; hibiscus. Tastes like fall — and your immune system loves it.</p>
+          </div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Pumpkin Spice <span class="menu-item-note">Real pumpkin, done right</span></div>
+            <p>And everything nice. Real pumpkin syrup — no artificial flavoring.</p>
+          </div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Smoked Maple Latte <span class="menu-item-note">Specialty · Hot only</span></div>
+            <p>A drink that feels like sitting by the campfire with your best friends. Real, organic maple syrup, smoked with maple wood chips.</p>
+          </div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Salted Molasses Cold Brew <span class="menu-item-note">Bold &amp; a little rebellious</span></div>
+            <p>Rich blackstrap molasses and a touch of sea salt, stirred into our cold brew and topped with our Salted Molasses cold foam.</p>
+          </div>
+        </div>
+        <div class="menu-card fade-up">
+          <div class="menu-card-title">For the Littles</div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Apple Chai Steamer <span class="menu-item-note">Non-caffeinated</span></div>
+            <p>Steamed chai milk with our housemade Apple Crisp syrup and Juniper Chai blend — warm, lightly spiced, all the cozy of apple pie with none of the caffeine.</p>
+          </div>
+          <p class="menu-card-note">Grown-ups: order yours dirty, with a shot of espresso. You've earned it.</p>
+        </div>
       </div>
     </div>
   </section>
