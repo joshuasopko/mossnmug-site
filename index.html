@@ -26,7 +26,11 @@
       --sage: #b1c296;
       --mid-bg: #2a1e10;
       --section-alt: #f5f0e6;
-      --autumn: #c1652e;
+      --winter-deep: #172544;
+      --winter-navy: #264a8c;
+      --winter-blue: #3d66ae;
+      --winter-frost: #8fb1e3;
+      --winter-ice: #eaf1fa;
       --nav-height: 64px;
     }
 
@@ -443,6 +447,8 @@
       margin-left: 6px;
     }
     .menu-item-note-popular {
+      display: block;
+      margin: 2px 0 0;
       font-style: normal;
       font-weight: 500;
       text-transform: uppercase;
@@ -465,9 +471,10 @@
       color: rgba(62, 44, 26, 0.55);
       line-height: 1.7;
     }
-    .menu-divider {
-      border-top: 0.5px solid rgba(147, 126, 84, 0.2);
-      margin: 16px 0;
+    .menu-list-item p.menu-item-footnote {
+      font-size: 12.5px;
+      font-style: italic;
+      margin-top: 4px;
     }
     .menu-card-note {
       font-size: 14px;
@@ -479,68 +486,100 @@
       padding-top: 12px;
       border-top: 0.5px solid rgba(147, 126, 84, 0.2);
     }
-    .menu-specialty {
-      padding: 24px 32px;
-      background: var(--dark-brown);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
+    .menu-card-note a {
+      color: inherit;
+      border-bottom: 0.5px solid currentColor;
     }
-    .menu-specialty p {
+    .menu-card-note + .menu-card-note { margin-top: 12px; padding-top: 0; border-top: 0; }
+    .menu-card-subtitle {
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 300;
+      margin-top: -8px;
+      margin-bottom: 16px;
+      color: rgba(62, 44, 26, 0.5);
+    }
+    .menu-card-wide { grid-column: 1 / -1; }
+    .menu-card-cols {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 40px;
+    }
+    .menu-card-cols.three { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
+    .menu-card-cols + .menu-group-title { margin-top: 28px; }
+    .menu-group-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--dark-brown);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      border-bottom: 0.5px solid rgba(147, 126, 84, 0.3);
+    }
+    .menu-closing {
+      text-align: center;
       font-family: 'Cormorant Garamond', serif;
       font-size: 20.4px;
       font-style: italic;
       font-weight: 300;
-      color: rgba(236, 229, 212, 0.82);
+      color: rgba(62, 44, 26, 0.6);
       line-height: 1.6;
-    }
-    .menu-specialty-badge {
-      flex-shrink: 0;
-      padding: 8px 16px;
-      border: 0.5px solid rgba(187, 156, 99, 0.38);
-      font-size: 10.8px;
-      font-weight: 300;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      white-space: nowrap;
     }
 
     /* =====================
-       FALL MENU (seasonal — remove/update after Oct 31)
+       WINTER MENU (Christmas)
     ===================== */
-    #fall-menu {
-      background: var(--mid-bg);
+    #winter-menu {
+      background: var(--winter-deep);
       padding: 96px 48px;
       position: relative;
       overflow: hidden;
     }
-    .fall-inner { max-width: 960px; margin: 0 auto; }
-    #fall-menu .section-label { color: var(--autumn); }
-    #fall-menu .section-label::before { background: var(--autumn); opacity: 0.6; }
-    #fall-menu h2 {
+    .winter-inner { max-width: 960px; margin: 0 auto; }
+    #winter-menu .section-label { color: var(--winter-frost); }
+    #winter-menu .section-label::before { background: var(--winter-frost); opacity: 0.6; }
+    #winter-menu h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(36px, 4.2vw, 50.4px);
       font-weight: 300;
-      color: var(--cream);
+      color: var(--winter-ice);
       line-height: 1.15;
       margin-bottom: 12px;
     }
-    #fall-menu h2 em { font-style: italic; color: var(--autumn); }
-    .fall-intro {
+    #winter-menu h2 em { font-style: italic; color: var(--winter-frost); }
+    .winter-intro {
       font-size: 14.4px;
       font-weight: 300;
       font-style: italic;
-      color: rgba(236, 229, 212, 0.55);
+      color: rgba(234, 241, 250, 0.6);
       margin-bottom: 40px;
     }
-    #fall-menu .menu-card {
-      background: rgba(245, 240, 230, 0.96);
-      border-top: 1.5px solid var(--autumn);
+    #winter-menu .menu-card {
+      background: rgba(234, 241, 250, 0.97);
+      border-top: 1.5px solid var(--winter-frost);
     }
-    #fall-menu .menu-list-item-title {
-      color: var(--autumn);
+    #winter-menu .menu-card-title { color: var(--winter-navy); }
+    #winter-menu .menu-card-subtitle,
+    #winter-menu .menu-item-note { color: rgba(23, 37, 68, 0.55); }
+    #winter-menu .menu-list-item-title { color: var(--winter-blue); }
+    #winter-menu .menu-list-item p { color: rgba(23, 37, 68, 0.75); }
+    .menu-badge {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 1px 8px;
+      border: 0.5px solid currentColor;
+      font-family: 'Jost', sans-serif;
+      font-size: 9.6px;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      vertical-align: 2px;
+    }
+    .menu-list-item-feature {
+      margin: 0 -16px 16px;
+      padding: 14px 16px;
+      background: #dbe7f6;
     }
 
     /* =====================
@@ -842,9 +881,10 @@
 
       #menu { padding: 72px 24px; }
       .menu-grid { grid-template-columns: 1fr; gap: 16px; }
-      .menu-specialty { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .menu-card-cols,
+      .menu-card-cols.three { grid-template-columns: 1fr; }
 
-      #fall-menu { padding: 72px 24px; }
+      #winter-menu { padding: 72px 24px; }
 
       #visit { padding: 72px 24px; }
       .visit-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -996,14 +1036,15 @@
           <div class="menu-card-title">Coffee &amp; Espresso</div>
           <ul>
             <li>Espresso</li>
-            <li>Americano</li>
+            <li>Americano <span class="menu-item-note">8 oz</span></li>
             <li>Cold Brew <span class="menu-item-note">Served over ice · 16 oz</span></li>
-            <li>Cortado <span class="menu-item-note">Traditional 4 oz</span></li>
+            <li>Cortado <span class="menu-item-note">Traditional 4 oz drink</span></li>
             <li>Pour Over <span class="menu-item-note">Dark roast blend</span></li>
             <li>Mocha</li>
             <li>Latte <span class="menu-item-note">Hot or iced</span></li>
           </ul>
-          <p class="menu-card-note">Oat milk, housemade syrups, and vanilla cold foam available as add-ons.</p>
+          <p class="menu-card-note">Add honey to a cortado. Lattes: oat milk or coconut milk alternative, housemade syrups, vanilla cold foam.</p>
+          <p class="menu-card-note">Our custom blended beans are locally roasted by Rooted Roastery in Rock Valley, IA.</p>
         </div>
         <div class="menu-card fade-up">
           <div class="menu-card-title">Housemade Syrups</div>
@@ -1013,89 +1054,121 @@
             <li>Brown Sugar Cinnamon</li>
           </ul>
           <div class="menu-list-item" style="margin-top: 16px;">
-            <div class="menu-list-item-title">The Meadow <span class="menu-item-note menu-item-note-popular">Signature · Fan Favorite</span></div>
-            <p>Honey, vanilla, chamomile, lemon balm &amp; lavender — the one everyone asks for by name.</p>
+            <div class="menu-list-item-title">The Meadow <span class="menu-item-note menu-item-note-popular">Our signature syrup · Most popular!</span></div>
+            <p>Honey, vanilla, chamomile, lemon balm, lavender.</p>
           </div>
+          <p class="menu-card-note">Check out our <a href="#winter-menu">Christmas Menu</a> for seasonal drinks!</p>
         </div>
-        <div class="menu-card fade-up">
+        <div class="menu-card menu-card-wide fade-up">
           <div class="menu-card-title">Teas</div>
-          <div class="menu-list-item">
-            <div class="menu-list-item-title">Garden Grove <span class="menu-item-note">Hot or iced</span></div>
-            <p>A fresh garden blend to calm the mind, relax the spirit, and focus the brain.</p>
+          <div class="menu-group-title">Hot Tea <span class="menu-item-note">8 oz</span></div>
+          <div class="menu-card-cols">
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Garden Grove</div>
+              <p>Blend of nettle, spearmint, lemon balm, red raspberry leaf, peppermint, and lemon balm.</p>
+            </div>
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Wildflower</div>
+              <p>Blend of chamomile, lemon balm, tulsi, rose, lavender and calendula.</p>
+            </div>
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Sunshine</div>
+              <p>Blend of lemongrass, calendula, orange peel, spearmint, rosehips, lemon balm.</p>
+            </div>
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Immune Strength</div>
+              <p>Blend of elderberry, elderflower, rosehips, echinacea, purpurea, orange peel, and ginger root. Perfect for this season!</p>
+            </div>
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Peppermint Cocoa</div>
+              <p>Blend of cocoa nibs, rooibos, peppermint leaf, cinnamon chips, roasted chicory root.</p>
+            </div>
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Winter Hearth</div>
+              <p>Blend of rooibos tea, cinnamon chips, orange peel, ginger root, cardamom pods, and cloves. Our version of Chai tea.</p>
+            </div>
           </div>
-          <div class="menu-list-item">
-            <div class="menu-list-item-title">Sunshine <span class="menu-item-note">Hot only</span></div>
-            <p>Lemongrass, calendula, orange peel, spearmint, rosehips &amp; lemon balm.</p>
+          <div class="menu-group-title">Hot or Iced Tea <span class="menu-item-note">16 oz iced | 8 oz hot</span></div>
+          <div class="menu-card-cols">
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Hibiscus Ginger</div>
+              <p>Blend of hibiscus flower, ginger root, orange peel, cinnamon chip, and rosehips. Tart, crisp, and delicious.</p>
+            </div>
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Summer Berry</div>
+              <p>Blend of hibiscus, rosehips, orange peel, elderberry, lemon balm, and spearmint. Light and refreshing!</p>
+            </div>
           </div>
-          <div class="menu-list-item">
-            <div class="menu-list-item-title">Summer Berry <span class="menu-item-note">Hot or iced</span></div>
-            <p>Feels like summer. You'll agree — we like it iced.</p>
-          </div>
-          <div class="menu-list-item">
-            <div class="menu-list-item-title">Wildflower <span class="menu-item-note">Hot or iced</span></div>
-            <p>Light, airy floral notes, like a field in bloom. We like it iced.</p>
-          </div>
-          <p class="menu-card-note">All our teas are hand-blended in-house — thoughtfully created, and worth slowing down for.</p>
+          <p class="menu-card-note">All our teas are hand-blended in-house using organic herbs.</p>
         </div>
-        <div class="menu-card fade-up">
-          <div class="menu-card-title">Lemonade &amp; Others</div>
-          <ul>
-            <li>Classic Lemonade</li>
-            <li>Hot Chocolate</li>
-          </ul>
-          <p class="menu-card-note">Add a housemade flavoring syrup — strawberry, or rose &amp; hibiscus.</p>
-          <div class="menu-list-item" style="margin-top: 16px;">
-            <div class="menu-list-item-title">Better than Grandma's Cookies</div>
-            <p>Brown butter chocolate chip, or party confetti with dye-free sprinkles. We dare grandma to beat this!</p>
+        <div class="menu-card menu-card-wide fade-up">
+          <div class="menu-card-title">Other Favorites</div>
+          <div class="menu-card-cols three">
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Hot Chocolate</div>
+              <p>Simply the best hot chocolate you'll ever enjoy.</p>
+              <p class="menu-item-footnote">Add a housemade marshmallow.</p>
+            </div>
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Apple Cider <span class="menu-item-note">16 oz iced | 8 oz hot</span></div>
+              <p>Crisp, sweet, and perfectly autumn.</p>
+            </div>
+            <div class="menu-list-item">
+              <div class="menu-list-item-title">Better than Grandma's Cookies</div>
+              <p>Check the small chalk board for today's treats!</p>
+            </div>
           </div>
+          <p class="menu-card-note">*Gluten-free items are prepared in a kitchen that also handles wheat and gluten. We take care to avoid cross-contact, but we cannot guarantee a completely gluten-free environment.</p>
         </div>
       </div>
-      <div class="menu-specialty fade-up">
-        <p>Our specialty and seasonal drinks change with the herbs and the season. Stop by and see what's brewing.</p>
-        <div class="menu-specialty-badge">Always changing</div>
-      </div>
+      <p class="menu-closing fade-up">Thank you for trying a drink at your new favorite coffee shop.</p>
     </div>
   </section>
 
   <!-- =====================
-       FALL MENU — seasonal, remove or update after Oct 31
+       WINTER MENU (Christmas)
   ===================== -->
-  <section id="fall-menu">
-    <div class="fall-inner">
-      <div class="section-label">Fall Menu · Through Oct 31</div>
-      <h2 class="fade-up">Autumn, <em>brewed.</em></h2>
-      <p class="fall-intro fade-up">The most unique, flavor-packed fall menu in the Midwest. We might be biased. We might also be right.</p>
+  <section id="winter-menu">
+    <div class="winter-inner">
+      <div class="section-label">Our Christmas Menu</div>
+      <h2 class="fade-up">Winter, <em>brewed.</em></h2>
+      <p class="winter-intro fade-up">Housemade syrups, warm spices, and a little Christmas magic.</p>
       <div class="menu-grid">
         <div class="menu-card fade-up">
           <div class="menu-card-title">Lattes &amp; Cold Brew</div>
           <div class="menu-list-item">
-            <div class="menu-list-item-title">The Harvest <span class="menu-item-note">A spicy sister to The Meadow</span></div>
-            <p>Honey, chamomile, lemon balm &amp; cinnamon.</p>
+            <div class="menu-list-item-title">Peppermint Mocha</div>
+            <p>Rich housemade mocha meets cool, real peppermint, made with no artificial flavors. Finished with a peppermint candy for the kind of warmth that feels like coming in from the snow.</p>
           </div>
           <div class="menu-list-item">
-            <div class="menu-list-item-title">Elderberry Remedy <span class="menu-item-note">Fall is calling for this</span></div>
-            <p>Elderberry, cinnamon, clove, orange, rose &amp; hibiscus. Tastes like fall — and your immune system loves it.</p>
+            <div class="menu-list-item-title">Nutcracker Latte*</div>
+            <p>Toasted pecan, deep caramel, and smooth vanilla, served with a chocolate candied pecan. A little bit of Christmas magic, one sip at a time.</p>
+            <p class="menu-item-footnote">* Contains tree nuts (pecans). Please let us know about any allergies.</p>
+          </div>
+          <div class="menu-list-item menu-list-item-feature">
+            <div class="menu-list-item-title">Gingerbread Brûlée <span class="menu-badge">Specialty</span></div>
+            <p>Warm gingerbread spice with a toasted housemade marshmallow on top and dye-free Christmas sprinkles. It tastes like the cookies you baked with someone you love.</p>
           </div>
           <div class="menu-list-item">
-            <div class="menu-list-item-title">Pumpkin Spice <span class="menu-item-note">Real pumpkin, done right</span></div>
-            <p>And everything nice. Real pumpkin syrup — no artificial flavoring.</p>
-          </div>
-          <div class="menu-list-item">
-            <div class="menu-list-item-title">Smoked Maple Latte <span class="menu-item-note">Specialty · Hot only</span></div>
-            <p>A drink that feels like sitting by the campfire with your best friends. Real, organic maple syrup, smoked with maple wood chips.</p>
-          </div>
-          <div class="menu-list-item">
-            <div class="menu-list-item-title">Salted Molasses Cold Brew <span class="menu-item-note">Bold &amp; a little rebellious</span></div>
-            <p>Rich blackstrap molasses and a touch of sea salt, stirred into our cold brew and topped with our Salted Molasses cold foam.</p>
+            <div class="menu-list-item-title">Sugar Plum Cold Brew</div>
+            <p>Smooth cold brew swirled with housemade sugar plum syrup, crowned with a dreamy purple sugar plum cold foam and a sparkle of plum sugar. Like a Christmas Eve fairy tale in a cup.</p>
           </div>
         </div>
         <div class="menu-card fade-up">
-          <div class="menu-card-title">For the Littles</div>
+          <div class="menu-card-title">Warm &amp; Snug.</div>
+          <p class="menu-card-subtitle">For the slow winter days.</p>
           <div class="menu-list-item">
-            <div class="menu-list-item-title">Apple Chai Steamer <span class="menu-item-note">Non-caffeinated</span></div>
-            <p>Steamed chai milk with our housemade Apple Crisp syrup and Juniper Chai blend — warm, lightly spiced, all the cozy of apple pie with none of the caffeine.</p>
+            <div class="menu-list-item-title">Elderberry Remedy</div>
+            <p>Our housemade elderberry syrup with honey, cinnamon, and warm spices. A comforting cup that feels like being taken care of.</p>
           </div>
-          <p class="menu-card-note">Grown-ups: order yours dirty, with a shot of espresso. You've earned it.</p>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Apple Chai Steamer <span class="menu-item-note">Contains dairy</span></div>
+            <p>Steamed milk infused with our Juniper Chai and sweetened with housemade apple crisp syrup, dusted with cinnamon. Caffeine-free and made for slow winter days. Make it dirty with a shot of espresso.</p>
+          </div>
+          <div class="menu-list-item">
+            <div class="menu-list-item-title">Apple Cider <span class="menu-item-note">Hot or iced</span></div>
+            <p>Crisp, sweet, and just right. Served warm to hold in your hands or iced for a little bit of fall that lingers.</p>
+          </div>
         </div>
       </div>
     </div>
