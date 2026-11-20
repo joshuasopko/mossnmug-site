@@ -333,7 +333,7 @@
     <dl class="hero-facts">
       <div><dt>Open</dt><dd>Mon – Sat · 9am – 5pm</dd></div>
       <div><dt>Find us</dt><dd>2019 S Minnesota Ave</dd></div>
-      <div><dt>Beans by</dt><dd>Rooted Roastery · Rock Valley, IA</dd></div>
+      <div><dt>Our house blend</dt><dd>Roasted just for us. Chocolate, honey, perfectly balanced.</dd></div>
     </dl>
   </section>
 
@@ -371,7 +371,7 @@
         <article class="card reveal">
           <div class="card-img"><img src="img/machine-front.jpg" alt="Front of the moss-green La Marzocco espresso machine" loading="lazy"></div>
           <span class="num">01</span><h3>Espresso</h3>
-          <p>Pulled by hand on our moss-green La Marzocco. The beans are our own blend, roasted nearby by Rooted Roastery in Rock Valley, Iowa.</p>
+          <p>Pulled by hand on our moss-green La Marzocco, from a house blend roasted only for us by Rooted Roastery in Rock Valley, Iowa. Chocolate and honey notes, perfectly balanced. <span class="aside-i">Classic coffee flavor, not a fruit bomb.</span></p>
         </article>
         <article class="card reveal">
           <div class="card-img"><img src="img/syrups.jpg" alt="A row of housemade syrups in glass bottles" loading="lazy"></div>
@@ -678,9 +678,6 @@
           const data = new FormData(form);
           const message = String(data.get('message') || '').trim();
 
-          // Honeypot filled: a bot. Pretend it worked and send nothing.
-          if (data.get('bot-field')) { showSuccess(); return; }
-
           // Nobody reads the page, types a note and hits send in under four seconds.
           if (!typedAt || Date.now() - loadedAt < 4000) {
             showError('That was quick! Give it a second and press send again.');
@@ -700,6 +697,12 @@
             showError('Please tick the "I\'m not a robot" box, then press send.');
             return;
           }
+
+          // Browser autofill and password managers sometimes fill the hidden honeypot for real people,
+          // and Netlify silently discards any post that carries it. A solved CAPTCHA already proves a
+          // person is here, so blank the honeypot rather than lose their note. Posts with no solved
+          // CAPTCHA are rejected by Netlify regardless.
+          if (captcha && captcha.value) data.set('bot-field', '');
 
           button.disabled = true;
           button.textContent = 'Sending…';
