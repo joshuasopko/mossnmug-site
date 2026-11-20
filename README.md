@@ -1,6 +1,6 @@
 # Moss & Mug — mossandmug.coffee
 
-Single-page landing site for Moss & Mug, Herbal Coffee & Tea Bar.
+Single-page landing site for Moss & Mug, Herbal Tea & Coffee Bar.
 Located inside Juniper Apothecary, Sioux Falls, SD.
 
 ## Stack
