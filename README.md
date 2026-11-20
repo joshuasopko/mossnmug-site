@@ -19,7 +19,7 @@ Located inside Juniper Apothecary, Sioux Falls, SD.
 - [ ] Replace map placeholder with Google Maps embed iframe
 - [x] Set up Cloudflare Email Routing: hello@mossandmug.coffee → personal Gmail
 - [ ] Set Netlify form notification email to hello@mossandmug.coffee
-- [ ] Stronger form CAPTCHA (Netlify reCAPTCHA 2 was tried 2026-11-19 and removed: notes stopped arriving while it was on)
+- [x] Add reCAPTCHA to contact form (Netlify's built-in reCAPTCHA 2, no keys needed)
 - [ ] Swap placeholder copy with final approved copy
 - [x] Add real photography (hero, story, the bar, visit)
 
@@ -36,7 +36,8 @@ Form name: "contact" — Netlify auto-detects via data-netlify="true"
 AJAX submission — no page reload on success
 
 Spam protection, in layers:
-- Honeypot field `bot-field` (hidden), checked by Netlify
+- Honeypot field `bot-field` (off-screen), checked by Netlify
+- Netlify reCAPTCHA 2 (`data-netlify-recaptcha`), checked by Netlify. The checkbox is injected at deploy time, so it does not appear on localhost
 - Netlify's built-in Akismet filter (caught messages land under Forms → Spam submissions in the Netlify dashboard)
 - Client-side checks in `index.html`: too-fast submits, link stuffing, field length limits
 - The contact email is assembled in script so it is not scrapeable from the page source
