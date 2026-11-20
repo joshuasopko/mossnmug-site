@@ -1,4 +1,4 @@
-# Moss & Mug — mossnmug.coffee
+# Moss & Mug — mossandmug.coffee
 
 Single-page landing site for Moss & Mug, Herbal Coffee & Tea Bar.
 Located inside Juniper Apothecary, Sioux Falls, SD.
@@ -6,8 +6,8 @@ Located inside Juniper Apothecary, Sioux Falls, SD.
 ## Stack
 - Plain HTML/CSS/JS — no framework, no build step
 - Netlify hosting + Netlify Forms (built-in spam honeypot)
-- Custom domain: mossnmug.coffee (primary)
-- Redirect: mossnmugcoffeeco.com → mossnmug.coffee
+- Custom domain: mossandmug.coffee (primary)
+- Redirect: mossnmugcoffeeco.com → mossandmug.coffee
 
 ## Files
 - `index.html` — entire site (single file: markup, styles, script)
@@ -18,8 +18,8 @@ Located inside Juniper Apothecary, Sioux Falls, SD.
 - [ ] Add real street address in the Visit section
 - [ ] Confirm hours are correct
 - [ ] Replace map placeholder with Google Maps embed iframe
-- [ ] Set up Cloudflare Email Routing: hello@mossnmug.coffee → personal Gmail
-- [ ] Set Netlify form notification email to hello@mossnmug.coffee
+- [x] Set up Cloudflare Email Routing: hello@mossandmug.coffee → personal Gmail
+- [ ] Set Netlify form notification email to hello@mossandmug.coffee
 - [ ] Add reCAPTCHA v3 to contact form (post-launch)
 - [ ] Swap placeholder copy with final approved copy
 - [x] Add real photography (hero, story, the bar, visit)
@@ -28,9 +28,9 @@ Located inside Juniper Apothecary, Sioux Falls, SD.
 1. Create new GitHub repo: mossnmug-site (separate from Allowance Lab)
 2. Push this folder to main branch
 3. Connect repo to Netlify
-4. Add custom domain mossnmug.coffee in Netlify domain settings
-5. Point mossnmug.coffee DNS to Netlify (via Cloudflare)
-6. Set Netlify form submission notification to hello@mossnmug.coffee
+4. Add custom domain mossandmug.coffee in Netlify domain settings
+5. Point mossandmug.coffee DNS to Netlify (via Cloudflare)
+6. Set Netlify form submission notification to hello@mossandmug.coffee
 7. Set up mossnmugcoffeeco.com as redirect domain in Netlify
 
 ## Netlify Forms

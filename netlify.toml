@@ -3,7 +3,7 @@
 
 [[redirects]]
   from = "https://mossnmugcoffeeco.com/*"
-  to = "https://mossnmug.coffee/:splat"
+  to = "https://mossandmug.coffee/:splat"
   status = 301
   force = true
 
