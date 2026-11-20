@@ -7,12 +7,11 @@ Located inside Juniper Apothecary, Sioux Falls, SD.
 - Plain HTML/CSS/JS — no framework, no build step
 - Netlify hosting + Netlify Forms (built-in spam honeypot)
 - Custom domain: mossandmug.coffee (primary)
-- Redirect: mossnmugcoffeeco.com → mossandmug.coffee
 
 ## Files
 - `index.html` — entire site (single file: markup, styles, script)
 - `img/` — photography (cropped and graded for web), `art.svg` line-art sprite, `og.jpg` share image
-- `netlify.toml` — Netlify config, redirect rules, security headers
+- `netlify.toml` — Netlify config, security headers
 
 ## TODO before launch
 - [ ] Add real street address in the Visit section
@@ -31,7 +30,6 @@ Located inside Juniper Apothecary, Sioux Falls, SD.
 4. Add custom domain mossandmug.coffee in Netlify domain settings
 5. Point mossandmug.coffee DNS to Netlify (via Cloudflare)
 6. Set Netlify form submission notification to hello@mossandmug.coffee
-7. Set up mossnmugcoffeeco.com as redirect domain in Netlify
 
 ## Netlify Forms
 Form name: "contact" — Netlify auto-detects via data-netlify="true"
