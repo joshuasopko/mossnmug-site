@@ -10,7 +10,8 @@ Located inside Juniper Apothecary, Sioux Falls, SD.
 - Redirect: mossnmugcoffeeco.com → mossnmug.coffee
 
 ## Files
-- `index.html` — entire site (single file)
+- `index.html` — entire site (single file: markup, styles, script)
+- `img/` — photography (cropped and graded for web), `art.svg` line-art sprite, `og.jpg` share image
 - `netlify.toml` — Netlify config, redirect rules, security headers
 
 ## TODO before launch
@@ -21,7 +22,7 @@ Located inside Juniper Apothecary, Sioux Falls, SD.
 - [ ] Set Netlify form notification email to hello@mossnmug.coffee
 - [ ] Add reCAPTCHA v3 to contact form (post-launch)
 - [ ] Swap placeholder copy with final approved copy
-- [ ] Add real photography when available (hero background, about section)
+- [x] Add real photography (hero, story, the bar, visit)
 
 ## Deploy steps (Claude Code)
 1. Create new GitHub repo: mossnmug-site (separate from Allowance Lab)
