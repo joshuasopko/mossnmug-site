@@ -230,7 +230,12 @@
     .form-row input, .form-row textarea { width: 100%; background: rgba(255, 255, 255, .7); border: 1px solid rgba(62, 44, 26, .22); border-radius: 0; padding: 14px 16px; font: 400 17px/1.5 var(--sans); color: var(--brown); outline: none; resize: vertical; -webkit-appearance: none; appearance: none; transition: border-color .2s, background .2s; }
     .form-row input:focus, .form-row textarea:focus { border-color: var(--moss); background: #fff; }
     .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .form-honeypot { display: none; }
+    /* Honeypot: off-screen rather than display:none, which smarter bots skip */
+    .form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
+    .form-captcha { margin: 2px 0 20px; }
+    .form-error { margin: 0 0 18px; padding: 14px 18px; background: rgba(150, 60, 40, .08); border: 1px solid rgba(150, 60, 40, .35); font-size: 15.5px; line-height: 1.5; color: #7a2f1d; }
+    .form-error[hidden] { display: none; }
+    .contact .btn[disabled] { opacity: .6; cursor: default; }
     .contact .btn { background: var(--brown); border-color: var(--brown); color: var(--gold); margin-top: 6px; }
     .contact .btn:hover { background: var(--ink); border-color: var(--ink); }
     .form-success { display: none; padding: 22px 26px; background: rgba(89, 103, 64, .1); border: 1px solid rgba(89, 103, 64, .3); font: italic 400 23px/1.5 var(--serif); color: var(--moss); }
@@ -558,25 +563,32 @@
         <p class="reveal">Questions, curiosities, or just want to say you love herbal coffee? We're listening.</p>
       </div>
       <div>
-        <!-- Netlify form — name attribute is required for Netlify to detect it -->
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
+        <!-- Netlify form. Spam protection, in layers:
+             1. Netlify honeypot (bot-field) — checked on Netlify's servers
+             2. Netlify reCAPTCHA 2 — checked on Netlify's servers, so direct POSTs without a solved challenge are rejected
+             3. Netlify's built-in Akismet filter on every submission
+             4. Client-side checks in the script below (speed, link stuffing) -->
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" id="contactForm">
           <input type="hidden" name="form-name" value="contact">
-          <div class="form-honeypot"><label>Don't fill this out: <input name="bot-field"></label></div>
+          <p class="form-honeypot" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div class="form-2col">
             <div class="form-row">
               <label for="name">Your name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+              <input type="text" id="name" name="name" placeholder="Jane Doe" autocomplete="name" maxlength="80" required>
             </div>
             <div class="form-row">
               <label for="email">Email address</label>
-              <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+              <input type="email" id="email" name="email" placeholder="jane@email.com" autocomplete="email" maxlength="120" required>
             </div>
           </div>
           <div class="form-row">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" minlength="10" maxlength="2000" required></textarea>
           </div>
-          <button type="submit" class="btn">Send it</button>
+          <!-- Netlify swaps this for the reCAPTCHA checkbox at deploy time (it does not appear on localhost) -->
+          <div class="form-captcha" data-netlify-recaptcha="true"></div>
+          <p class="form-error" id="formError" role="alert" hidden></p>
+          <button type="submit" class="btn" id="formSubmit">Send it</button>
         </form>
         <div class="form-success" id="formSuccess" role="alert">Message received. We'll be in touch soon.</div>
       </div>
@@ -644,23 +656,65 @@
       addEventListener('resize', update);
       update();
 
-      // Netlify form AJAX submission
+      // Contact form: AJAX submit to Netlify Forms, with a few checks that stop bots before anything is sent.
+      // The real gatekeepers (honeypot, reCAPTCHA, Akismet) run on Netlify's servers; these are extra layers.
       const form = document.getElementById('contactForm');
-      const successMsg = document.getElementById('formSuccess');
       if (form) {
+        const successMsg = document.getElementById('formSuccess');
+        const errorMsg = document.getElementById('formError');
+        const button = document.getElementById('formSubmit');
+        const contactEmail = ['hello', 'mossandmug.coffee'].join('@'); // assembled here so address scrapers don't find it in the page
+        const loadedAt = Date.now();
+        let typedAt = 0;
+        form.addEventListener('input', () => { if (!typedAt) typedAt = Date.now(); });
+
+        const showError = (text) => { errorMsg.textContent = text; errorMsg.hidden = false; };
+        const showSuccess = () => { form.style.display = 'none'; successMsg.style.display = 'block'; };
+
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
+          errorMsg.hidden = true;
           const data = new FormData(form);
+          const message = String(data.get('message') || '').trim();
+
+          // Honeypot filled: a bot. Pretend it worked and send nothing.
+          if (data.get('bot-field')) { showSuccess(); return; }
+
+          // Nobody reads the page, types a note and hits send in under four seconds.
+          if (!typedAt || Date.now() - loadedAt < 4000) {
+            showError('That was quick! Give it a second and press send again.');
+            return;
+          }
+
+          // Link stuffing is the classic spam signature.
+          const links = (message.match(/https?:\/\/|www\./gi) || []).length;
+          if (links > 2 || /<a\s|\[url[=\]]|\[link[=\]]/i.test(message)) {
+            showError('Please take the links out of your message and try again.');
+            return;
+          }
+
+          // reCAPTCHA (present on the live site only): require the box to be ticked.
+          const captcha = form.querySelector('[name="g-recaptcha-response"]');
+          if (captcha && !captcha.value) {
+            showError('Please tick the "I\'m not a robot" box, then press send.');
+            return;
+          }
+
+          button.disabled = true;
+          button.textContent = 'Sending…';
           try {
-            await fetch('/', {
+            const res = await fetch('/', {
               method: 'POST',
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: new URLSearchParams(data).toString()
             });
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
+            if (!res.ok) throw new Error('Form post failed: ' + res.status);
+            showSuccess();
           } catch (err) {
-            alert('Something went wrong. Please try emailing us directly at hello@mossandmug.coffee');
+            showError('Something went wrong and your note was not sent. Please try again, or email us at ' + contactEmail + '.');
+            button.disabled = false;
+            button.textContent = 'Send it';
+            if (window.grecaptcha) { try { window.grecaptcha.reset(); } catch (_) {} }
           }
         });
       }
